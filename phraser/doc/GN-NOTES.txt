@@ -1,0 +1,30 @@
+April, 2015:
+
+The idea of the phraser tool:
+
+- implement cluster based algorithm for unsupervised learning of phrases
+
+- currently I am using the phrases as computed by 
+  Dekang Lin, Kenneth Church, Heng Ji, Satoshi Sekine, David Yarowsky, Shane Bergsma, Kailash Patil, Emily Pitler, 
+  Rachel Lathbury, Vikram Rao, Kapil Dalwani and Sushant Narsale, New Tools for Web-Scale N-grams, 
+  In LREC 2010, Valleta, Malta, May, 2010. 
+  
+  /Users/gune00/data/PhrasalClusters/
+  
+  
+DONE:
+ - creation of cluster dictionaries 
+	/Users/gune00/data/PhrasalClusters/clusterDics
+
+NEXT
+ 
+ 	- further subdivided the phrasal clusters
+ 	- identify cluster labels
+ 	- apply on German
+ 	- taxonomy/glossary extraction
+ 		- POS tagging of phrases
+ 		- extraction of phrasal grammars/patterns
+ 		
+ 		
+BUILD NEMEX dictionaries
+	- use with NemexF or NemexA

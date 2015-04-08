@@ -1,0 +1,75 @@
+GN, FEB. 2015
+
+
+Identification of Symmetric Relations ala Rappoport, Coling 2014
+***************************************************************
+
+Can one apply/adapt this approach also for relation extraction?
+
+Approach:
+- substitute non-CCW with OCW, and keep CCW words. Gives a chain of CCW+OCW per sentence.
+	- is similar to my CCW-tagger
+	- but using frequency is probably less problematic, HFW and CW
+	- can be created incrementally assuming thresholds T_H and T_C
+		- if freq(w) > T_H per million words -> CAT=HFW )
+		- if freq(w) < T_C per million words -> CAT=CW
+			in ACL-2006 paper: T_H=100, T_C=50; also muss man nur die ersten 1M Wörter analysieren ?
+		- stream through text 
+		- create entry for word with initial value for CW (as boolean | enumeration type
+	
+	
+- extract flexible patterns of length 5 (the it can be run/checked with GoogleBooks5grams)
+- identify all flexible patterns with exactly two OCW CW1 and CW2 wildcards
+	- as far as I understand, only single word CW, i.e., no multi-words nor adjectives etc.
+	- more details on Davidov&Rappoprt, ACL, 2006
+	
+- then identify those patterns were CW1 and CW2 are interchangeable
+- compute portion of pattern p fond in corpus with pair (CW1,CW2) and (CW2,CW1) -> accept if larger than a threshold
+- they apply it on google books 4 grams and get 20 symmetric patterns
+
+- symmetric patterns are then used to identify pairs of OCW words:
+	- create a directed graphs G with nouns as nodes and relations (symmetric patterns) as edges
+	- constructed a undirected grap symG:
+		- collect word pairs and check whether they are symmetric by means of any pattern
+		- compute a weight for each edge based on two measures of symmetry of patterns applied on symG and G
+			(ako relative frequence of nodes pairs participating in a pattern p)
+		- discard low weight patterns and patterns which are covered by another retaiedn pattern
+	- use seed pairs for words for performing label propagation using an iterative 
+		k-NN algorithm to automatically label other word pairs
+		
+RESEARCH:
+- how to handle NER 
+- how to handle MWL
+- how to handle discontinuous elements
+
+
+OBACHT:		
+- the process of extracting flexible patterns is similar to a NE-based surface extraction of binary relations
+	- should be possible to combine with DependencyFinder
+	- how can this work for German? 
+	
+How to learn unsupervised MWL dictionaries for NemexA and NemexF?
+****************************************************************
+
+Goal would be:
+if I have extracted all possible MWL and count them, how can I distinguish between MWL which are NEs and those which are NOT ?
+how can I identify even multiple classes
+How different is this from ordinary clustering ?
+
+How can I make use of a Zipf-Distribution ?
+
+The  idea is to compute a relationship between the frequencies of MWL and their context:
+- as a relation between rare cases and errors
+- extract ADJ*NN sequences or only NN sequences
+- count them
+- determine context (left or/and right window)
+- what is context ?
+- count context
+- Now, map to Zipf; idea would be
+- lower frequent MWL which occur in frequent context are not errors, but NEs
+
+The core idea or problem statement is similar to Downey et al, IJCAI 2005:
+if a MWL x appears k times in n (unique) sentences that match phrases 
+that are indicative for a class C, what is the probability that x belongs to C ?
+
+
