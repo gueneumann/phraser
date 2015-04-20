@@ -185,8 +185,6 @@ public class CreateClusterDictionaries {
 			System.out.println("System time (msec): " + (time2-time1));
 		}
 	}
-
-	
 	
 	private static double getField(String line) {
 		String[] lineSeparated = line.split("\t");
@@ -218,7 +216,6 @@ public class CreateClusterDictionaries {
 }
 
 class myDoubleComparator implements Comparator<Double> {
-
 	@Override
 	//Compares two readings based on their weights
 	public int compare(Double o1, Double o2) {
