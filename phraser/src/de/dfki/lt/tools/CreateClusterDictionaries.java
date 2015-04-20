@@ -198,13 +198,14 @@ public class CreateClusterDictionaries {
 	 * Main method:
 	 * initialize Custer dictionary set.
 	 * scan all files from sourceDir and create dictionary files
-	 * finally close all open stream
+	 * finally close all open stream.
+	 * <p>"/Users/gune00/data/PhrasalClusters/",
+	 * <p>"/Users/gune00/data/PhrasalClusters/clusterDics/"
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		CreateClusterDictionaries clusterDic = new CreateClusterDictionaries(
-				"/Users/gune00/data/PhrasalClusters/",
-				"/Users/gune00/data/PhrasalClusters/clusterDics/");
+				args[0], args[1]);
 		clusterDic.processPhrasalDirectory();
 		clusterDic.closeAllDictionaryStreams();
 		try {
