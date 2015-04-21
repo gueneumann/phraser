@@ -6,7 +6,6 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Writer;
 
 import de.dfki.lt.data.NemexEntry;
 
@@ -121,6 +120,9 @@ public class WikiPediaList2Nemex {
 				}
 			}
 			//0 utf-8 EN 9875 9871
+			// TODO - copy file to new file which has initial line and delete old file
+			// This is probably inefficient but might work
+			
 			String initialLine = "0 " + "UTF8 " + this.getMwlEntries() + " " + this.getSingleWordEntries();
 			out.write(initialLine+"\n");
 			out.close();
