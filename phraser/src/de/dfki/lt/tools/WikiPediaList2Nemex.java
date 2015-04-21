@@ -122,7 +122,7 @@ public class WikiPediaList2Nemex {
 					out.write("\n");
 				}
 			}
-			
+
 			in.close();
 			out.close();
 
@@ -133,7 +133,7 @@ public class WikiPediaList2Nemex {
 			String initialLine = "0 " + "UTF8 " + this.getMwlEntries() + " " + this.getSingleWordEntries();
 			WikiPediaList2Nemex.transcode(this.getOutFile()+".tmp", this.getOutFile(), initialLine);
 			WikiPediaList2Nemex.deleteTmpFile(this.getOutFile()+".tmp");
-			
+
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -141,21 +141,33 @@ public class WikiPediaList2Nemex {
 	}
 
 	private boolean isValidEntry(String content) {
-		if (content.contains("Category:"))
+		if (content.contains(":"))
 			return false;
 		return true;
 	}
 
 	private NemexEntry makeNewNemexEntry(String[] parsedLine, int i, String nerType, double weight) {
 		String[] cleanedLine = stripOfElements(parsedLine);
+
 		String word = makeNemexWord(cleanedLine);
 		NemexEntry nemexEntry = new NemexEntry(word, i, nerType, weight);
 		return nemexEntry;
 	}
 
 	private String[] stripOfElements(String[] parsedLine) {
-		// TODO Auto-generated method stub
-		return parsedLine;
+		int rightBorder = 0;
+		for (int i = 0; i < parsedLine.length; i++){
+			if (parsedLine[i].contains("(")) 
+				break;
+			else
+				rightBorder++;
+		}
+		String[] cleanedLine = new String[rightBorder];
+		if (rightBorder==0) return parsedLine;
+		for (int i = 0; i < cleanedLine.length; i++){
+			cleanedLine[i]=parsedLine[i];
+		}
+		return cleanedLine;
 	}
 
 	private String makeNemexWord(String[] parsedLine) {
