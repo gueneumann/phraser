@@ -162,6 +162,9 @@ public class WikiPediaList2Nemex {
 
 	/**
 	 * args[0], args[1], args[2]:
+	 * J:/data/NE-Lists/wikiPedia/WikiPeople.lst
+	 * J:/data/NE-Lists/wikiPedia/nemex/WikiPeople.txt
+	 * PERSON
 	 * in
 	 * @param args
 	 */
