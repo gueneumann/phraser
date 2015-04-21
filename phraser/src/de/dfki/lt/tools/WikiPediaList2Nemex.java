@@ -112,12 +112,12 @@ public class WikiPediaList2Nemex {
 
 		try {
 			while ((content = in.readLine()) != null){
-				//TODO How to add initial lexicon line ?
 				String[] parsedLine = content.split(" ");
-				this.singleWordEntries=this.mwlEntries; // Would need to keep a unique hash in order to word types
 				if (isValidEntry(content)){
+					index++;
 					this.mwlEntries++;
-					this.currentNemexEntry = makeNewNemexEntry(parsedLine, index++, nerType, 0.0);
+					this.singleWordEntries=this.mwlEntries; // Would need to keep a unique hash in order to word types
+					this.currentNemexEntry = makeNewNemexEntry(parsedLine, index, nerType, 0.0);
 					out.write(this.currentNemexEntry.toString());
 					out.write("\n");
 				}
