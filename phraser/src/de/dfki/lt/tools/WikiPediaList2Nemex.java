@@ -130,7 +130,8 @@ public class WikiPediaList2Nemex {
 			// Copy file to new file which has initial line and delete old file.
 			// This is probably inefficient but might work.
 
-			String initialLine = "0 " + "UTF8 " + this.getMwlEntries() + " " + this.getSingleWordEntries();
+			//TODO: Add language as parameter
+			String initialLine = "0 " + "UTF8 " + "LANG" + this.getMwlEntries() + " " + this.getSingleWordEntries();
 			WikiPediaList2Nemex.transcode(this.getOutFile()+".tmp", this.getOutFile(), initialLine);
 			WikiPediaList2Nemex.deleteTmpFile(this.getOutFile()+".tmp");
 
