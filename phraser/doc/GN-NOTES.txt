@@ -18,7 +18,7 @@ DONE:
 
 NEXT
  
- 	- further subdivided the phrasal clusters
+ 	- further subdivide the phrasal clusters
  	- identify cluster labels
  	- apply on German
  	- taxonomy/glossary extraction
