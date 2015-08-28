@@ -18,17 +18,17 @@ Approach:
 		- create entry for word with initial value for CW (as boolean | enumeration type
 	
 	
-- extract flexible patterns of length 5 (the it can be run/checked with GoogleBooks5grams)
+- extract flexible patterns of length 5 (it can be run/checked with GoogleBooks5grams)
 - identify all flexible patterns with exactly two OCW CW1 and CW2 wildcards
 	- as far as I understand, only single word CW, i.e., no multi-words nor adjectives etc.
 	- more details on Davidov&Rappoprt, ACL, 2006
 	
-- then identify those patterns were CW1 and CW2 are interchangeable
-- compute portion of pattern p fond in corpus with pair (CW1,CW2) and (CW2,CW1) -> accept if larger than a threshold
+- then identify those patterns were CW1 and CW2 are interchangeable -> this checks for symmetry
+- compute portion of pattern p found in corpus with pair (CW1,CW2) and (CW2,CW1) -> accept if larger than a threshold
 - they apply it on google books 4 grams and get 20 symmetric patterns
 
 - symmetric patterns are then used to identify pairs of OCW words:
-	- create a directed graphs G with nouns as nodes and relations (symmetric patterns) as edges
+	- create a directed graph G with nouns as nodes and relations (symmetric patterns) as edges
 	- constructed a undirected grap symG:
 		- collect word pairs and check whether they are symmetric by means of any pattern
 		- compute a weight for each edge based on two measures of symmetry of patterns applied on symG and G
