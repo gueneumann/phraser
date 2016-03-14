@@ -28,3 +28,5 @@ NEXT
  		
 BUILD NEMEX dictionaries
 	- use with NemexF or NemexA
+	
+CHECKY
